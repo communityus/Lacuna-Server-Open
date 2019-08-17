@@ -38,10 +38,8 @@ RUN cpanm --notest App::Daemon
 RUN cpanm Exception::Class Test::Harness Test::Differences Test::Exception Test::Warn Test::Deep
 RUN cpanm Time::HiRes
 RUN cpanm --verbose Test::Most
-# RUN cpanm Business::PayPal::API
-#                                                                  Business::PayPal::API
-ENV ANYEVENT_WEBSOCKET_TEST_SKIP_SSL=1
-#, next up also after trap 'EV'
+
+# ENV ANYEVENT_WEBSOCKET_TEST_SKIP_SSL=1
 RUN cpan MLEHMANN/AnyEvent-7.14.tar.gz
 RUN cpanm Test::Most Test::Trap Beanstalk::Client Chat::Envolve Clone Config::JSON Config::YAML
 RUN cpanm DateTime DateTime::Format::Duration DateTime::Format::MySQL DateTime::Format::Strptime DBD::mysql DBIx::Class
@@ -50,11 +48,13 @@ RUN cpanm Digest::HMAC_SHA1 Digest::MD5 Email::Stuff Email::Valid File::Copy Fil
 RUN cpanm JSON JSON::WebToken JSON::XS List::MoreUtils List::Util
 RUN cpanm List::Util::WeightedChoice Log::Any::Adapter Log::Any::Adapter::Log4perl Log::Log4perl LWP::Protocol::https LWP::UserAgent
 
-
-
 # Fails when it cannot make a network connection
 RUN cpanm --notest IO::Socket::IP
+
+# Move these so deps. come first / and reduce duplicates also ver.
 RUN cpanm Business::PayPal::API
+RUN cpan RIZEN/Facebook-Graph-1.1204.tar.gz
+
 RUN cpanm JSON::RPC::Dispatcher JSON::RPC::Dispatcher::App
 
 # without verbose it times out and aborts due to long compilation
@@ -62,13 +62,10 @@ RUN cpanm --verbose Memcached::libmemcached Net::Server::SS::PreFork
 
 RUN cpanm Module::Find Moose namespace::autoclean Term::ProgressBar::Simple Net::Amazon::S3 Net::Server::SS::PreFork Path::Class
 RUN cpanm Plack::Middleware::CrossOrigin Pod::Simple::HTML Regexp::Common Server::Starter SOAP::Lite String::Random
-# RUN cpanm SOAP::Lite
-# RUN cpan PHRED/SOAP-Lite-1.26.tar.gz
 RUN cpanm Text::CSV_XS Tie::IxHash URI::Encode UUID::Tiny XML::FeedPP XML::Hash::LX XML::Parser
 RUN cpanm Term::ProgressBar Term::ProgressBar::Quiet PerlX::Maybe Firebase::Auth Gravatar::URL
 RUN cpanm Digest::MD4 Bad::Words
-RUN cpanm Business::PayPal::API
-RUN cpan RIZEN/Facebook-Graph-1.1204.tar.gz
+
 # RUN cpan PERIGRIN/JSON-Any-1.32.tar.gz
 
 RUN groupadd nogroup
