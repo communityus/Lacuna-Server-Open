@@ -10,7 +10,7 @@ RUN mkdir /usr/src/perl
 WORKDIR   /usr/src/perl
 
 RUN curl -SL https://cpan.metacpan.org/authors/id/R/RJ/RJBS/perl-5.20.0.tar.bz2 -o perl-5.20.0.tar.bz2 \
-    && echo '298fa605138c1a00dab95643130ae0edab369b4d *perl-5.20.0.tar.bz2' | sha1sum -c - \
+    && echo 'e925e4fc36e90eace19a1ca850f912618ba6788f *perl-5.20.0.tar.bz2' | sha1sum -c - \
     && tar --strip-components=1 -xjf perl-5.20.0.tar.bz2 -C /usr/src/perl \
     && rm perl-5.20.0.tar.bz2 \
     && ./Configure -Duse64bitall -Duseshrplib  -des \
