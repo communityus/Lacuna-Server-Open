@@ -69,7 +69,7 @@ RUN cpanm Term::ProgressBar Term::ProgressBar::Quiet PerlX::Maybe Firebase::Auth
 RUN cpanm Digest::MD4 Bad::Words
 RUN cpanm Business::PayPal::API
 RUN cpan RIZEN/Facebook-Graph-1.1204.tar.gz
-RUN cpan PERIGRIN/JSON-Any-1.32.tar.gz
+# RUN cpan PERIGRIN/JSON-Any-1.32.tar.gz
 
 RUN groupadd nogroup
 WORKDIR /data/Lacuna-Server-Open/bin
