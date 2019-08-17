@@ -54,7 +54,6 @@ RUN cpanm List::Util::WeightedChoice Log::Any::Adapter Log::Any::Adapter::Log4pe
 
 # Fails when it cannot make a network connection
 RUN cpanm --notest IO::Socket::IP
-RUN cpanm Business::PayPal::API
 RUN cpanm JSON::RPC::Dispatcher JSON::RPC::Dispatcher::App
 
 # without verbose it times out and aborts due to long compilation
@@ -66,6 +65,7 @@ RUN cpan PHRED/SOAP-Lite-1.26.tar.gz
 RUN cpanm Text::CSV_XS Tie::IxHash URI::Encode UUID::Tiny XML::FeedPP XML::Hash::LX XML::Parser
 RUN cpanm Term::ProgressBar Term::ProgressBar::Quiet PerlX::Maybe Firebase::Auth Gravatar::URL
 RUN cpanm Digest::MD4 Bad::Words
+RUN cpanm Business::PayPal::API
 
 RUN groupadd nogroup
 WORKDIR /data/Lacuna-Server-Open/bin
