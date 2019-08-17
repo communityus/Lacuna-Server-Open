@@ -1,8 +1,5 @@
 FROM centos:6
 
-# best practice?
-RUN yum -y upgrade
-
 RUN yum install -y make cpan wget tar gcc gcc-c++ zlib-devel openssl-devel expat expat-devel ncurses-devel
 RUN yum install -y glibc-devel git mysql mysql-devel libxml2 libxml2-devel mysql-server gd gd-devel
 
