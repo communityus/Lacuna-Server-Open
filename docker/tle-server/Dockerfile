@@ -1,27 +1,11 @@
-FROM centos:7
+FROM centos:6
 
-RUN yum -y upgrade
-
-RUN yum install -y make cpan wget tar gcc gcc-c++ zlib-devel openssl openssl-devel expat expat-devel ncurses-devel
-RUN yum install -y glibc-devel git mysql mysql-devel libxml2 libxml2-devel mysql-server gd gd-devel cronie bzip2
+RUN yum install -y make cpan wget tar gcc gcc-c++ zlib-devel openssl-devel expat expat-devel ncurses-devel
+RUN yum install -y glibc-devel git mysql mysql-devel libxml2 libxml2-devel mysql-server gd gd-devel
 
 RUN mkdir /downloads
-RUN mkdir /usr/src/perl
-WORKDIR   /usr/src/perl
 
-RUN curl -SL https://cpan.metacpan.org/authors/id/R/RJ/RJBS/perl-5.20.0.tar.bz2 -o perl-5.20.0.tar.bz2 \
-    && echo 'e925e4fc36e90eace19a1ca850f912618ba6788f *perl-5.20.0.tar.bz2' | sha1sum -c - \
-    && tar --strip-components=1 -xjf perl-5.20.0.tar.bz2 -C /usr/src/perl \
-    && rm perl-5.20.0.tar.bz2 \
-    && ./Configure -Duse64bitall -Duseshrplib  -des \
-    && make -j$(nproc) \
-    && make install \
-    && cd /usr/src \
-    && curl -LO https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm \
-    && chmod +x cpanm \
-    && ./cpanm App::cpanminus \
-    && rm -fr ./cpanm /usr/src/perl /tmp/*
-
+RUN cpan App::cpanminus
 
 # Term::ReadKey does not test (seemingly because in docker build there is no terminal)
 RUN cpanm --notest Term::ReadKey
@@ -38,22 +22,17 @@ RUN cpanm --notest App::Daemon
 RUN cpanm Exception::Class Test::Harness Test::Differences Test::Exception Test::Warn Test::Deep
 RUN cpanm Time::HiRes
 RUN cpanm --verbose Test::Most
+RUN cpanm Business::PayPal::API
 
-# ENV ANYEVENT_WEBSOCKET_TEST_SKIP_SSL=1
-RUN cpan MLEHMANN/AnyEvent-7.14.tar.gz
-RUN cpanm Test::Most Test::Trap Beanstalk::Client Chat::Envolve Clone Config::JSON Config::YAML
+RUN cpanm Test::Most Test::Trap AnyEvent Beanstalk::Client Business::PayPal::API Chat::Envolve Clone Config::JSON Config::YAML
 RUN cpanm DateTime DateTime::Format::Duration DateTime::Format::MySQL DateTime::Format::Strptime DBD::mysql DBIx::Class
 RUN cpanm DBIx::Class::DynamicSubclass DBIx::Class::InflateColumn::Serializer DBIx::Class::Schema DBIx::Class::TimeStamp
-RUN cpanm Digest::HMAC_SHA1 Digest::MD5 Email::Stuff Email::Valid File::Copy File::Path Guard IO::Socket::SSL
-RUN cpanm JSON JSON::WebToken JSON::XS List::MoreUtils List::Util
+RUN cpanm Digest::HMAC_SHA1 Digest::MD5 Email::Stuff Email::Valid Facebook::Graph File::Copy File::Path Guard IO::Socket::SSL
+RUN cpanm JSON JSON::Any JSON::WebToken JSON::XS List::MoreUtils List::Util
 RUN cpanm List::Util::WeightedChoice Log::Any::Adapter Log::Any::Adapter::Log4perl Log::Log4perl LWP::Protocol::https LWP::UserAgent
 
 # Fails when it cannot make a network connection
 RUN cpanm --notest IO::Socket::IP
-
-# Move these so deps. come first / and reduce duplicates also ver.
-RUN cpanm Business::PayPal::API
-RUN cpan RIZEN/Facebook-Graph-1.1204.tar.gz
 
 RUN cpanm JSON::RPC::Dispatcher JSON::RPC::Dispatcher::App
 
@@ -66,10 +45,8 @@ RUN cpanm Text::CSV_XS Tie::IxHash URI::Encode UUID::Tiny XML::FeedPP XML::Hash:
 RUN cpanm Term::ProgressBar Term::ProgressBar::Quiet PerlX::Maybe Firebase::Auth Gravatar::URL
 RUN cpanm Digest::MD4 Bad::Words
 
-# RUN cpan PERIGRIN/JSON-Any-1.32.tar.gz
-
 RUN groupadd nogroup
 WORKDIR /data/Lacuna-Server-Open/bin
 
-# RUN yum -y install vixie-cron
+RUN yum -y install vixie-cron
 RUN chkconfig crond on
