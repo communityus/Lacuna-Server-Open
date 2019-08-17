@@ -47,7 +47,7 @@ RUN cpanm Test::Most Test::Trap Beanstalk::Client Chat::Envolve Clone Config::JS
 RUN cpanm DateTime DateTime::Format::Duration DateTime::Format::MySQL DateTime::Format::Strptime DBD::mysql DBIx::Class
 RUN cpanm DBIx::Class::DynamicSubclass DBIx::Class::InflateColumn::Serializer DBIx::Class::Schema DBIx::Class::TimeStamp
 RUN cpanm Digest::HMAC_SHA1 Digest::MD5 Email::Stuff Email::Valid File::Copy File::Path Guard IO::Socket::SSL
-RUN cpanm JSON JSON::Any JSON::WebToken JSON::XS List::MoreUtils List::Util
+RUN cpanm JSON JSON::WebToken JSON::XS List::MoreUtils List::Util
 RUN cpanm List::Util::WeightedChoice Log::Any::Adapter Log::Any::Adapter::Log4perl Log::Log4perl LWP::Protocol::https LWP::UserAgent
 
 
@@ -68,6 +68,7 @@ RUN cpanm Term::ProgressBar Term::ProgressBar::Quiet PerlX::Maybe Firebase::Auth
 RUN cpanm Digest::MD4 Bad::Words
 RUN cpanm Business::PayPal::API
 RUN cpan RIZEN/Facebook-Graph-1.1204.tar.gz
+RUN cpan PERIGRIN/JSON-Any-1.32.tar.gz
 
 RUN groupadd nogroup
 WORKDIR /data/Lacuna-Server-Open/bin
