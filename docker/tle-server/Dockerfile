@@ -1,11 +1,27 @@
 FROM centos:6
 
+# best practice?
+RUN yum -y upgrade
+
 RUN yum install -y make cpan wget tar gcc gcc-c++ zlib-devel openssl-devel expat expat-devel ncurses-devel
 RUN yum install -y glibc-devel git mysql mysql-devel libxml2 libxml2-devel mysql-server gd gd-devel
 
 RUN mkdir /downloads
+RUN mkdir /usr/src/perl
+WORKDIR   /usr/src/perl
 
-RUN cpan App::cpanminus
+RUN curl -SL https://cpan.metacpan.org/authors/id/R/RJ/RJBS/perl-5.20.0.tar.bz2 -o perl-5.20.0.tar.bz2 \
+    && echo '298fa605138c1a00dab95643130ae0edab369b4d *perl-5.20.0.tar.bz2' | sha1sum -c - \
+    && tar --strip-components=1 -xjf perl-5.20.0.tar.bz2 -C /usr/src/perl \
+    && rm perl-5.20.0.tar.bz2 \
+    && ./Configure -Duse64bitall -Duseshrplib  -des \
+    && make -j$(nproc) \
+    && make install \
+    && cd /usr/src \
+    && curl -LO https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm \
+    && chmod +x cpanm \
+    && ./cpanm App::cpanminus \
+    && rm -fr ./cpanm /usr/src/perl /tmp/*
 
 # Term::ReadKey does not test (seemingly because in docker build there is no terminal)
 RUN cpanm --notest Term::ReadKey
