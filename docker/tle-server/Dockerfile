@@ -3,7 +3,7 @@ FROM centos:7
 RUN yum -y upgrade
 
 RUN yum install -y make cpan wget tar gcc gcc-c++ zlib-devel openssl openssl-devel expat expat-devel ncurses-devel
-RUN yum install -y glibc-devel git mysql mysql-devel libxml2 libxml2-devel mysql-server gd gd-devel bzip2
+RUN yum install -y glibc-devel git mysql mysql-devel libxml2 libxml2-devel mysql-server gd gd-devel cronie bzip2
 
 RUN mkdir /downloads
 RUN mkdir /usr/src/perl
@@ -74,5 +74,5 @@ RUN cpan RIZEN/Facebook-Graph-1.1204.tar.gz
 RUN groupadd nogroup
 WORKDIR /data/Lacuna-Server-Open/bin
 
-RUN yum -y install vixie-cron
+# RUN yum -y install vixie-cron
 RUN chkconfig crond on
