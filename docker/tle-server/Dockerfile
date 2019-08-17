@@ -46,24 +46,15 @@ RUN cpan MLEHMANN/AnyEvent-7.14.tar.gz
 RUN cpanm Test::Most Test::Trap Beanstalk::Client Chat::Envolve Clone Config::JSON Config::YAML
 RUN cpanm DateTime DateTime::Format::Duration DateTime::Format::MySQL DateTime::Format::Strptime DBD::mysql DBIx::Class
 RUN cpanm DBIx::Class::DynamicSubclass DBIx::Class::InflateColumn::Serializer DBIx::Class::Schema DBIx::Class::TimeStamp
-
-
-RUN cpan MIKEM/Net-SSLeay-1.82.tar.gz
-RUN cpan --notest SULLR/IO-Socket-SSL-2.052.tar.gz
-RUN cpanm LWP::Protocol::https LWP::UserAgent
-RUN cpanm Facebook::Graph
-RUN cpanm Digest::HMAC_SHA1 
-RUN cpanm Digest::MD5 
-RUN cpanm Email::Stuff Email::Valid
-
-RUN cpanm File::Copy
-RUN cpanm File::Path Guard
+RUN cpanm Digest::HMAC_SHA1 Digest::MD5 Email::Stuff Email::Valid Facebook::Graph File::Copy File::Path Guard IO::Socket::SSL
 RUN cpanm JSON JSON::Any JSON::WebToken JSON::XS List::MoreUtils List::Util
-RUN cpanm List::Util::WeightedChoice Log::Any::Adapter Log::Any::Adapter::Log4perl Log::Log4perl 
+RUN cpanm List::Util::WeightedChoice Log::Any::Adapter Log::Any::Adapter::Log4perl Log::Log4perl LWP::Protocol::https LWP::UserAgent
+
 
 
 # Fails when it cannot make a network connection
 RUN cpanm --notest IO::Socket::IP
+RUN cpanm Business::PayPal::API
 RUN cpanm JSON::RPC::Dispatcher JSON::RPC::Dispatcher::App
 
 # without verbose it times out and aborts due to long compilation
