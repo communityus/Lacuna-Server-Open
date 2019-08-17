@@ -22,6 +22,7 @@ RUN curl -SL https://cpan.metacpan.org/authors/id/R/RJ/RJBS/perl-5.20.0.tar.bz2 
     && ./cpanm App::cpanminus \
     && rm -fr ./cpanm /usr/src/perl /tmp/*
 
+
 # Term::ReadKey does not test (seemingly because in docker build there is no terminal)
 RUN cpanm --notest Term::ReadKey
 
@@ -39,12 +40,15 @@ RUN cpanm Time::HiRes
 RUN cpanm --verbose Test::Most
 # RUN cpanm Business::PayPal::API
 #                                                                  Business::PayPal::API
-# ENV ANYEVENT_WEBSOCKET_TEST_SKIP_SSL=1 , next up also after trap 'EV'
+ENV ANYEVENT_WEBSOCKET_TEST_SKIP_SSL=1
+#, next up also after trap 'EV'
 RUN cpan MLEHMANN/AnyEvent-7.14.tar.gz
 RUN cpanm Test::Most Test::Trap Beanstalk::Client Chat::Envolve Clone Config::JSON Config::YAML
 RUN cpanm DateTime DateTime::Format::Duration DateTime::Format::MySQL DateTime::Format::Strptime DBD::mysql DBIx::Class
 RUN cpanm DBIx::Class::DynamicSubclass DBIx::Class::InflateColumn::Serializer DBIx::Class::Schema DBIx::Class::TimeStamp
-RUN cpanm Digest::HMAC_SHA1 Digest::MD5 Email::Stuff Email::Valid Facebook::Graph File::Copy File::Path Guard IO::Socket::SSL
+RUN cpanm Digest::HMAC_SHA1 Digest::MD5 Email::Stuff Email::Valid Facebook::Graph File::Copy File::Path Guard
+RUN cpan SULLR/IO-Socket-SSL-2.052.tar.gz
+RUN cpan MIKEM/Net-SSLeay-1.82.tar.gz
 RUN cpanm JSON JSON::Any JSON::WebToken JSON::XS List::MoreUtils List::Util
 RUN cpanm List::Util::WeightedChoice Log::Any::Adapter Log::Any::Adapter::Log4perl Log::Log4perl LWP::Protocol::https LWP::UserAgent
 
