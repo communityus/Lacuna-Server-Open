@@ -47,8 +47,9 @@ RUN cpanm Test::Most Test::Trap Beanstalk::Client Chat::Envolve Clone Config::JS
 RUN cpanm DateTime DateTime::Format::Duration DateTime::Format::MySQL DateTime::Format::Strptime DBD::mysql DBIx::Class
 RUN cpanm DBIx::Class::DynamicSubclass DBIx::Class::InflateColumn::Serializer DBIx::Class::Schema DBIx::Class::TimeStamp
 
-RUN cpan SULLR/IO-Socket-SSL-2.052.tar.gz
+
 RUN cpan MIKEM/Net-SSLeay-1.82.tar.gz
+RUN cpan SULLR/IO-Socket-SSL-2.052.tar.gz
 RUN cpanm LWP::Protocol::https LWP::UserAgent
 RUN cpanm Facebook::Graph
 RUN cpanm Digest::HMAC_SHA1 
