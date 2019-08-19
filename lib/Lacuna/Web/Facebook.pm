@@ -60,11 +60,11 @@ sub www_authorize {
 sub www_server_list {
     my ($self, $request) = @_;
     my $cache = Lacuna->cache;
-    my $servers = $cache->get_and_deserialize('www.lacunaexpanse.com', 'servers.json');
+    my $servers = $cache->get_and_deserialize('localhost', 'servers.json');
     unless (defined $servers && ref $servers eq 'ARRAY') {
-        my $servers_json = LWP::UserAgent->new->get('http://www.lacunaexpanse.com/servers.json')->content;
+        my $servers_json = LWP::UserAgent->new->get('http://localhost/servers.json')->content;
         $servers = JSON->new->decode($servers_json);
-        $cache->set('www.lacunaexpanse.com', 'servers.json', $servers, 60 * 60 * 24);
+        $cache->set('localhost', 'servers.json', $servers, 60 * 60 * 24);
     }
     my $template = '<a href="%s" class="server_button" target="_blank">
 <div class="server_name_label">Server</div>
