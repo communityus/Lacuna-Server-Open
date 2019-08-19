@@ -32,7 +32,7 @@ sub www_send_test_message {
     {Planet '.$empire->home_planet->id.' '.$empire->home_planet->name.'}
     {Alliance 1 Fake Alliance}
     {Starmap 0 0 The Center of the Map}
-    [http://www.lacunaexpanse.com]
+    [http://192.168.0.37]
     ',
     subject        => 'Test Message',
     tags        => ['Alert'],
