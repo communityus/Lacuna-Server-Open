@@ -38,7 +38,7 @@ if ($ping) {
 
 
 unless ($empire_name && $password && $server) {
-    say "Usage: $0 --empire-name=xxx --password=xxx --server=us1.lacunaexpanse.com";
+    say "Usage: $0 --empire-name=xxx --password=xxx --server=192.168.0.37";
     exit;
 }
 
