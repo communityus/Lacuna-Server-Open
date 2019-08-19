@@ -23,7 +23,7 @@ foreach my $x (int($config->get('map_size/x')->[0]/250) .. int($config->get('map
         my $feed = XML::FeedPP::RSS->new;
         $feed->title('Network 19 Zone '.$zone.' News');
         $feed->description('Network 19 is the trusted name in news for the Lacuna Expanse.');
-        $feed->link('http://www.lacunaexpanse.com/');
+        $feed->link('http://localhost/');
         my $rs = $news_domain->search(
             {
                 zone        => $zone,
