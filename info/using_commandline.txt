@@ -17,6 +17,7 @@ through the web client.
 connect_tle_server.sh):
 
     perl -I/data/Lacuna-Server-Open/lib -ML -E '$e = LD->empire(shift)->is_admin(1); $e->update' 'Your Account'
+    or look elsewhere
 
   You can obviously create extra admin accounts, but that's not usually
   going to be too useful.
@@ -78,3 +79,4 @@ connect_tle_server.sh):
   and will not impact the captcha of multiple runs, making it easy to
   run both with and without a captcha in subsequent tests.
 
+  like here: perl -I/data/Lacuna-Server-Open/lib -ML -e '$e=LD->empire("test"); $e->is_admin(1); $e->chat_admin(1); $e->update'
