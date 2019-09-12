@@ -64,8 +64,8 @@ RUN cpanm Module::Find Moose namespace::autoclean Term::ProgressBar::Simple Net:
 RUN cpanm Plack::Middleware::CrossOrigin Pod::Simple::HTML Regexp::Common Server::Starter SOAP::Lite String::Random
 RUN cpanm Text::CSV_XS Tie::IxHash URI::Encode UUID::Tiny XML::FeedPP XML::Parser
 RUN cpanm lib::abs
-RUN cpanm Term::ProgressBar Term::ProgressBar::Quiet PerlX::Maybe Firebase::Auth Gravatar::URL
 RUN cpanm XML::Hash::LX
+RUN cpanm Term::ProgressBar Term::ProgressBar::Quiet PerlX::Maybe Firebase::Auth Gravatar::URL
 RUN cpanm Digest::MD4 Bad::Words
 
 # RUN cpan PERIGRIN/JSON-Any-1.32.tar.gz
