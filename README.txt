@@ -25,3 +25,15 @@ https://metacpan.org/pod/Test::More
 
 https://www.interchangecommerce.org/i/dev/demo
 https://metacpan.org/pod/HTML::Template
+
+https://learn.perl.org/examples/static_server.html
+https://learn.perl.org/faq/perlfaq3.html#How-do-I-debug-my-Perl-programs
+https://learn.perl.org/examples/dns.html
+
+https://perlmonks.org/
+https://perlmonks.org/?node=Tutorials
+
+https://metacpan.org/pod/distribution/MCE/lib/MCE.pod
+https://metacpan.org/pod/MCE::Shared
+
+https://metacpan.org/pod/Graphics::Framebuffer
