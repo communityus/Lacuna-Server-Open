@@ -13,3 +13,15 @@ https://github.com/plainblack/Lacuna-Server-Open/commit/2ba6a07599b268d204d3e974
 
 Worth a look:
 - https://www.rankred.com/perl-frameworks/
+
+# Using or might use:
+https://moose.iinteractive.com/en/
+https://metacpan.org/pod/distribution/Moose/lib/Moose/Manual.pod
+https://perlmaven.com/moose
+https://perlmaven.com/object-oriented-perl-using-moose
+https://github.com/communityus-branch/cperl-mode : moose
+
+https://metacpan.org/pod/Test::More
+
+https://www.interchangecommerce.org/i/dev/demo
+https://metacpan.org/pod/HTML::Template
