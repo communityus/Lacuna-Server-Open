@@ -10,3 +10,6 @@ http://www.lacunaexpanse.com/developers.
 
 saben & diablotin attack 
 https://github.com/plainblack/Lacuna-Server-Open/commit/2ba6a07599b268d204d3e974dfeba864ac61f640
+
+Worth a look:
+- https://www.rankred.com/perl-frameworks/
