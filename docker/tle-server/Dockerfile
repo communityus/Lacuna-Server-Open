@@ -15,7 +15,9 @@ RUN cpanm --verbose --notest GD
 RUN cpanm GD::SecurityImage
 
 # Install App::Daemon dependencies (with tests)
-RUN cpanm Sysadm::Install File::Pid Log::Log4perl
+RUN cpanm Sysadm::Install 
+RUN File::Pid 
+RUN Log::Log4perl
 # App::Daemon does not test (TODO look into this)
 RUN cpanm --notest App::Daemon
 
