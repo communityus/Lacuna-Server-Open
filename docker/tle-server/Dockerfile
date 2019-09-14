@@ -5,7 +5,10 @@ RUN yum install -y glibc-devel git mysql mysql-devel libxml2 libxml2-devel mysql
 
 RUN mkdir /downloads
 
-RUN cpan App::cpanminus
+
+RUN curl -LO https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm \
+    && chmod +x cpanm \
+    && ./cpanm App::cpanminus
 
 # Term::ReadKey does not test (seemingly because in docker build there is no terminal)
 RUN cpanm --notest Term::ReadKey
