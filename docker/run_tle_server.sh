@@ -1,6 +1,8 @@
-docker run -it -p ${TLE_SERVER_LISTEN:-127.0.0.1}:${TLE_SERVER_PORT:-5000}:5000 	\
-  --rm -it --name=tle-server                    \
-  --net=tle-network                             \
+docker run                                          \
+  --rm -it --name=tle-server                        \
+  -p 0.0.0.0:5000:5000                              \
+  -p 0.0.0.0:8000:8000                              \
+  --net=tle-network                                 \
   -v ${PWD}/../bin:/data/Lacuna-Server/bin      \
   -v ${PWD}/../docs:/data/Lacuna-Server/docs    \
   -v ${PWD}/../etc:/data/Lacuna-Server/etc      \
