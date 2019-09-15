@@ -71,7 +71,7 @@ RUN cpanm Digest::MD4 Bad::Words
 # RUN cpan PERIGRIN/JSON-Any-1.32.tar.gz
 
 RUN groupadd nogroup
-WORKDIR /data/Lacuna-Server-Open/bin
+WORKDIR /data/Lacuna-Server/bin
 
 # RUN yum -y install vixie-cron
 RUN chkconfig crond on
