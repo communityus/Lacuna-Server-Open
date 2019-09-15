@@ -1,0 +1,6 @@
+[submodule "mission"]
+	path = mission
+	url = https://github.com/communityus-private/Lacuna-Mission.git
+[submodule "assets"]
+	path = assets
+	url = https://github.com/communityus-private/Lacuna-Assets.git
